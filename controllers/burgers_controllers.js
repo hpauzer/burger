@@ -7,6 +7,7 @@ var db = require("../models");
 var connection = require("../config/connection.js");
 
 
+
 router.get("/", function(req, res) {
     db.Burger.findAll({}).then(function(dbBurger) {
         res.render("index", { burger: dbBurger });

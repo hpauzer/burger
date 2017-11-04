@@ -1,0 +1,12 @@
+body,
+li {
+    color: rgb(216, 111, 198);
+    font-size: 25px;
+    list-style: none;
+}
+
+img {
+    height: 300px;
+    display: block;
+    margin: 0 auto;
+}

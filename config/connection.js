@@ -2,19 +2,26 @@
 // CONNECTION.JS - THIS FILE INITIATES THE CONNECTION TO MYSQL
 // *********************************************************************************
 
-// Dependencies
-var Sequelize = require("sequelize");
+// Require mysql
+var mysql = require("mysql");
 
-// Creates mySQL connection using Sequelize
-var sequelize = new Sequelize("burger_db", "root", "", {
-    host: "localhost",
-    dialect: "mysql",
-    pool: {
-        max: 5,
-        min: 0,
-        idle: 10000
-    }
+// Set up our connection information
+var connection = mysql.createConnection({
+    port: 3306,
+    host: "local",
+    user: "root",
+    password: "",
+    database: "burgers_db"
 });
 
-// Exports the connection for other files to use
-module.exports = sequelize;
+// Connect to the database
+connection.connect(function(err) {
+    if (err) {
+        console.error("error connecting: " + err.stack);
+        return;
+    }
+    console.log("connected as id " + connection.threadId);
+});
+
+// Export connection
+module.exports = connection;
